@@ -12,7 +12,7 @@ WORKDIR /app
 
 # Install dependencies with good cache leveraging workspace manifests
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
-COPY apps/marketing/package.json apps/marketing/package.json
+COPY apps/home/package.json apps/home/package.json
 COPY apps/docs/package.json apps/docs/package.json
 COPY packages/eslint-config-custom/package.json packages/eslint-config-custom/package.json
 COPY packages/ts-config/package.json packages/ts-config/package.json

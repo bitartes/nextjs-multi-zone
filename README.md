@@ -14,10 +14,10 @@ Demo URL: https://vercel-microfrontends-multi-zones.vercel.app/
 
 This example consists of two separate microfrontends that can be deployed independently:
 
-| Application       | Description                                                        | Deploy                                                                                                                                                                                                                                                                            |
-| ----------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Marketing**     | Main application handling homepage, pricing, and marketing content | [![Deploy Marketing App](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples&project-name=microfrontends-marketing&repository-name=examples&root-directory=microfrontends/nextjs-multi-zones%2Fapps%2Fmarketing) |
-| **Documentation** | Dedicated docs microfrontend handling all `/docs` routes           | [![Deploy Documentation App](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples&project-name=microfrontends-docs&repository-name=examples&root-directory=microfrontends/nextjs-multi-zones%2Fapps%docs)         |
+| Application       | Description                                                        | Deploy                                                                                                                                                                                                                                                                      |
+| ----------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Marketing**     | Main application handling homepage, pricing, and marketing content | [![Deploy Marketing App](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples&project-name=bitartes-marketing&repository-name=examples&root-directory=microfrontends/nextjs-multi-zones%2Fapps%2Fmarketing) |
+| **Documentation** | Dedicated docs microfrontend handling all `/docs` routes           | [![Deploy Documentation App](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples&project-name=bitartes-docs&repository-name=examples&root-directory=microfrontends/nextjs-multi-zones%2Fapps%docs)         |
 
 ---
 
@@ -269,16 +269,15 @@ export default withVercelToolbar()(
 The marketing app defines how to route to the docs microfrontend:
 
 ```jsonc
-// apps/marketing/microfrontends.json
+// apps/home/microfrontends.json
 {
   "applications": {
-    "microfrontends-marketing": {
+    "bitartes-marketing": {
       "development": {
         "local": 3000,
-        "fallback": "microfrontends-marketing.vercel.app",
       },
     },
-    "microfrontends-docs": {
+    "bitartes-docs": {
       "development": { "local": 3001 },
       "routing": [{ "group": "docs", "paths": ["/docs", "/docs/:path*"] }],
     },
@@ -305,3 +304,10 @@ import { Link } from '@vercel/microfrontends/next/client';
 This setup enables the marketing app to seamlessly route `/docs` requests to the documentation microfrontend while maintaining a unified user experience.
 
 Learn more in the [Optimizing Hard Navigations](https://vercel.com/docs/microfrontends/managing-microfrontends#optimizing-navigations-between-microfrontends) documentation.
+
+# Docker
+
+```
+docker compose -f docker-compose.prod.yml up --build -d
+docker compose -f docker-compose.prod.yml down && docker compose -f docker-compose.prod.yml up -d
+```

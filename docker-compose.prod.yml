@@ -1,12 +1,12 @@
 version: "3.9"
 services:
-  marketing:
+  home:
     build:
       context: .
-      dockerfile: apps/marketing/Dockerfile
+      dockerfile: apps/home/Dockerfile
     environment:
       - NODE_ENV=production
-    # marketing no longer binds host port; gateway will expose 3000
+    # home no longer binds host port; gateway will expose 3000
   docs:
     build:
       context: .
@@ -18,7 +18,7 @@ services:
   gateway:
     image: nginx:1.25-alpine
     depends_on:
-      - marketing
+      - home
       - docs
     ports:
       - "3000:3000"

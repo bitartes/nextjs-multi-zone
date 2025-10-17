@@ -1,13 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/microfrontends.json",
   "applications": {
-    "microfrontends-marketing": {
+    "bitartes-home": {
       "development": {
         "local": 3000,
-        "fallback": "microfrontends-marketing.labs.vercel.dev"
+        "fallback": "bitartes-docs"
       }
     },
-    "microfrontends-docs": {
+    "bitartes-docs": {
       "development": {
         "local": 3001
       },

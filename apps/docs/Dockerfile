@@ -5,7 +5,7 @@ FROM node:20-bullseye-slim AS deps
 ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json .npmrc ./
-COPY apps/marketing/package.json apps/marketing/package.json
+COPY apps/home/package.json apps/home/package.json
 COPY apps/docs/package.json apps/docs/package.json
 COPY packages/eslint-config-custom/package.json packages/eslint-config-custom/package.json
 COPY packages/ts-config/package.json packages/ts-config/package.json
@@ -23,7 +23,7 @@ RUN corepack enable && corepack prepare pnpm@9.4.0 --activate
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/apps/docs/node_modules ./apps/docs/node_modules
 COPY --from=deps /app/packages/ts-config/node_modules ./packages/ts-config/node_modules
-RUN pnpm -F microfrontends-docs build
+RUN pnpm -F bitartes-docs build
 
 # --- runner ---
 FROM node:20-bullseye-slim AS runner
