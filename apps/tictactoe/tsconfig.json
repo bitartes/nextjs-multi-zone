@@ -1,0 +1,15 @@
+{
+  "extends": "../../packages/ts-config/tsconfig.next.json",
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": ".",
+    "skipLibCheck": true,
+    "allowJs": true
+  },
+  "include": [
+    "app/**/*",
+    "components/**/*",
+    "lib/**/*",
+    ".next/types/**/*.ts"
+  ]
+}

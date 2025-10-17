@@ -17,6 +17,17 @@
           "paths": ["/docs", "/docs/:path*"]
         }
       ]
+    },
+    "bitartes-tictactoe": {
+      "development": {
+        "local": 3002
+      },
+      "routing": [
+        {
+          "group": "tictactoe",
+          "paths": ["/tictactoe", "/tictactoe/:path*"]
+        }
+      ]
     }
   }
 }

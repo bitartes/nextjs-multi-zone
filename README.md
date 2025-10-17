@@ -309,5 +309,6 @@ Learn more in the [Optimizing Hard Navigations](https://vercel.com/docs/microfro
 
 ```
 docker compose -f docker-compose.prod.yml up --build -d
-docker compose -f docker-compose.prod.yml down && docker compose -f docker-compose.prod.yml up -d
+docker compose -f docker-compose.prod.yml down
+docker compose -f docker-compose.prod.yml up -d
 ```
