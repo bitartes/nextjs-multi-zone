@@ -1,0 +1,27 @@
+# Keep Docker images lean and builds fast
+node_modules
+**/node_modules
+.pnpm-store
+.turbo
+.next
+**/.next
+vitest.config.ts.timestamp-*
+
+# Vercel/Next build and local artifacts
+.vercel
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# General
+.DS_Store
+.env*
+.git
+.gitignore
+.vscode
+
+# Dist outputs
+-dist
+dist/
