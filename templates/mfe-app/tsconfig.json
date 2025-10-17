@@ -1,0 +1,9 @@
+{
+  "extends": "../../packages/ts-config/tsconfig.next.json",
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": ".",
+    "skipLibCheck": true
+  },
+  "include": ["app/**/*", "components/**/*", "lib/**/*"]
+}

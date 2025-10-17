@@ -1,102 +1,67 @@
-import Image from 'next/image';
 import { Link } from '@vercel/microfrontends/next/client';
 import { Button } from '@/components/ui/button';
-import mfeIcon from '../../public/mfe-icon-dark.png';
+
+const cards = [
+  {
+    title: 'Getting Started',
+    body: 'Workspace setup, routing, and dev workflow.',
+    href: '#getting-started',
+  },
+  {
+    title: 'Examples',
+    body: 'Sample zones showing cross-linking and asset isolation.',
+    href: '#examples',
+  },
+  {
+    title: 'Architecture',
+    body: 'Composition, boundaries, and deployment considerations.',
+    href: '#architecture',
+  },
+  {
+    title: 'Tooling',
+    body: 'Turbo, Tailwind, Vercel Toolbar, and diagnostics.',
+    href: '#tooling',
+  },
+];
 
 export default function DocsPage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <h1 className="flex flex-row gap-2 text-2xl font-bold text-gray-900">
-            <Image
-              alt="MFE Icon"
-              className="inline-block"
-              height={32}
-              src={mfeIcon}
-              width={32}
-            />
-            Vercel Microfrontends
+    <div className="min-h-screen">
+      <main className="px-6 sm:px-8 py-16">
+        <section className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight bg-gradient-to-r from-[hsl(var(--accent))] to-[hsl(var(--secondary))] bg-clip-text text-transparent">
+            Microfrontends Documentation
           </h1>
-          <nav>
-            <ul className="flex space-x-4">
-              <li>
-                <Link
-                  className="text-gray-600 hover:text-gray-900"
-                  href="#getting-started"
-                >
-                  Getting Started
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-gray-600 hover:text-gray-900"
-                  href="#examples"
-                >
-                  Examples
-                </Link>
-              </li>
-              <li>
-                <Link className="text-blue-600 hover:text-blue-800" href="/">
-                  Back to Home
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-
-      <main className="flex-grow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h2 className="text-3xl font-extrabold text-gray-900 mb-8">
-            Documentation
-          </h2>
-
-          <section className="mb-12" id="getting-started">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Getting Started
-            </h3>
-            <p className="text-gray-600 mb-4">
-              Welcome to Vercel Microfrontends documentation. This guide will
-              help you get started with implementing microfrontends in your
-              project.
-            </p>
-            <ol className="list-decimal list-inside text-gray-600">
-              <li className="mb-2">Install the Microfrontends CLI tool</li>
-              <li className="mb-2">Create your first microfrontend</li>
-              <li className="mb-2">Configure the host application</li>
-              <li>Deploy your microfrontends</li>
-            </ol>
-          </section>
-
-          <section className="mb-12" id="examples">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Examples</h3>
-            <p className="text-gray-600 mb-4">
-              Check out these examples to see Vercel Microfrontends in action:
-            </p>
-            <ul className="list-disc list-inside text-gray-600">
-              <li className="mb-2">Basic microfrontend setup</li>
-              <li className="mb-2">Communication between microfrontends</li>
-              <li className="mb-2">Shared state management</li>
-              <li>Microfrontend with different frameworks</li>
-            </ul>
-          </section>
-
-          <div className="mt-8">
-            <Button asChild>
-              <Link href="/">Return to Home</Link>
-            </Button>
-          </div>
-        </div>
-      </main>
-
-      <footer className="bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <p className="text-center text-gray-500">
-            &copy; 2025 Vercel Microfrontends All rights reserved.
+          <p className="mt-4 text-muted-foreground">
+            Build independently, ship together. Patterns, guides, and examples for the Bitartes microfrontends workspace.
           </p>
-        </div>
-      </footer>
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <Button asChild>
+              <Link href="#getting-started">Get Started</Link>
+            </Button>
+            <Button variant="outline" asChild>
+              <Link href="#examples">See Examples</Link>
+            </Button>
+            <Link className="text-primary hover:opacity-80 ml-2" href="/">
+              Back to Home
+            </Link>
+          </div>
+        </section>
+
+        <section className="mt-14 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {cards.map((card) => (
+            <Link key={card.href} href={card.href} className="group">
+              <div className="rounded-xl p-6 bg-card/40 backdrop-blur border border-[hsl(var(--border))] shadow-sm transition-all duration-300 group-hover:border-[hsl(var(--ring))] group-hover:shadow-[0_0_32px_hsla(var(--accent)/0.25)]">
+                <h3 className="text-lg font-medium">{card.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{card.body}</p>
+                <span className="mt-4 inline-flex items-center text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                  Read more →
+                </span>
+              </div>
+            </Link>
+          ))}
+        </section>
+      </main>
     </div>
   );
 }

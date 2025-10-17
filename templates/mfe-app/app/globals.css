@@ -27,15 +27,15 @@ a {
 
 @layer base {
   :root {
-    --background: 220 16% 8%; /* #0b0f19-ish */
-    --foreground: 210 40% 97%; /* soft white */
+    --background: 220 16% 8%;
+    --foreground: 210 40% 97%;
     --card: 222 16% 10%;
     --card-foreground: 210 40% 97%;
     --popover: 222 16% 10%;
     --popover-foreground: 210 40% 97%;
-    --primary: 190 100% 50%; /* neon cyan */
+    --primary: 190 100% 50%;
     --primary-foreground: 222 84% 4.9%;
-    --secondary: 265 85% 60%; /* neon magenta */
+    --secondary: 265 85% 60%;
     --secondary-foreground: 222 84% 4.9%;
     --muted: 220 14% 18%;
     --muted-foreground: 215 20% 65%;
@@ -87,7 +87,6 @@ a {
   }
   body {
     @apply bg-background text-foreground;
-    /* subtle radial glow */
     background-image: radial-gradient(600px 300px at 80% -20%, hsla(var(--accent)/0.12) 0%, transparent 60%), radial-gradient(600px 300px at -10% 120%, hsla(var(--secondary)/0.12) 0%, transparent 60%);
     background-repeat: no-repeat;
   }

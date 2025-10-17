@@ -3,17 +3,16 @@ import {
   PrefetchCrossZoneLinksProvider,
 } from '@vercel/microfrontends/next/client';
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Space_Grotesk } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Toolbar } from './client-scripts';
 
-const inter = Inter({ subsets: ['latin'] });
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Vercel Microfrontends - Revolutionize Your Frontend',
-  description:
-    'Build scalable and maintainable web applications with our microfrontend architecture.',
+  title: 'Bitartes Microfrontends',
+  description: 'Minimalist microfrontend hub.',
 };
 
 export default function RootLayout({
@@ -23,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={spaceGrotesk.className}>
         <PrefetchCrossZoneLinksProvider>
           {children}
         </PrefetchCrossZoneLinksProvider>

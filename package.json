@@ -17,7 +17,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,json,jsonc}\"",
     "lint": "turbo lint",
     "start": "turbo start",
-    "typecheck": "turbo typecheck"
+    "typecheck": "turbo typecheck",
+    "kill:ports": "node scripts/kill-mfe-ports.mjs"
   },
   "lint-staged": {
     "**/*.{ts,tsx,md,json,jsonc}": [
