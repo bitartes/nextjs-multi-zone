@@ -7,6 +7,7 @@ A practical multi‑zone setup using Next.js App Router and Vercel Microfrontend
 - Shared tooling: TypeScript configs, ESLint rules, Tailwind theme
 
 ## Project Structure
+
 ```
 apps/
   home/         # Shell app + microfrontends.json
@@ -18,20 +19,24 @@ docs/cloud-config.md
 ```
 
 ## Prerequisites
+
 - Node.js 20+
 - pnpm 9.4+
 - Docker (for production builds)
 
 ## Local Development
+
 ```bash
 pnpm install
 pnpm dev
 ```
+
 - Dev proxy: `http://localhost:3024`
 - Routes: `/` (home), `/docs`, `/tictactoe`
 - Cross‑zone links: use `@vercel/microfrontends/next/client` `Link`
 
 ## Production with Docker Compose
+
 ```bash
 docker compose -f docker-compose.prod.yml up --build -d
 # stop
@@ -39,6 +44,7 @@ docker compose -f docker-compose.prod.yml down
 # restart
 docker compose -f docker-compose.prod.yml up -d
 ```
+
 - Gateway: `http://localhost:3000` (Nginx)
 - Docs also exposed on `http://localhost:3001` (direct)
 - Nginx mirrors `nginx/default.conf`:
@@ -48,20 +54,28 @@ docker compose -f docker-compose.prod.yml up -d
   - `/vc-ap-bitartes-<app>/*` → rewrite to `/<asset>` for static files
 
 ## Kubernetes on AWS (EKS)
+
 See `docs/cloud-config.md` for:
+
 - Per‑app Deployments + Services
 - Nginx Ingress with path routing and regex rewrites for asset prefixes
 - TLS and domain setup
 - Notes on using ALB vs Nginx Ingress
 
 ## Adding a New App
-1) Scaffold under `apps/<slug>` (use `templates/mfe-app` as reference)
-2) Register routes in `apps/home/microfrontends.json`
-3) Update `nginx/default.conf` and `docker-compose.prod.yml` for production routing
-4) Build locally and verify via dev proxy and gateway
+
+1. Scaffold under `apps/<slug>` (use `templates/mfe-app` as reference)
+2. Register routes in `apps/home/microfrontends.json`
+3. Update `nginx/default.conf` and `docker-compose.prod.yml` for production routing
+4. Build locally and verify via dev proxy and gateway
 
 ## Notes
+
 - Next.js `output: 'standalone'` is enabled for each app
 - Vercel Toolbar can be gated/disabled in production
 - Asset‑prefix rewrites (`/vc-ap-bitartes-<app>`) are essential for static assets
 - Keep apps on the same origin for seamless cross‑zone prefetch
+
+# CI/CD
+
+- https://chatgpt.com/share/68f4b9e1-3af4-800f-848f-29371aefe512
